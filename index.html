@@ -1,0 +1,260 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0b0c10">
+<title>Apex Tracker</title>
+<style>
+:root{--bg:#0b0c10;--panel:#14161c;--panel2:#1b1e26;--line:#2a2e38;--text:#f3f4f6;--muted:#9ca3af;--gold:#f5b942;--gold2:#d99419;--green:#67d6a3;--red:#ff7373;--radius:16px}
+*{box-sizing:border-box}html{background:var(--bg);color-scheme:dark}body{margin:0;background:var(--bg);color:var(--text);font:15px/1.45 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;padding:env(safe-area-inset-top) 0 calc(112px + env(safe-area-inset-bottom));}
+button,input,select,textarea{font:inherit}button{cursor:pointer;border:1px solid var(--line);background:var(--panel2);color:var(--text);border-radius:12px;min-height:48px;padding:10px 14px}button:active{transform:scale(.985)}button.primary{background:var(--gold);border-color:var(--gold);color:#17130a;font-weight:800}button.subtle{background:transparent}button.danger{border-color:#713939;color:#ffaaaa}.app{max-width:920px;margin:auto;padding:16px 14px 24px}.topbar{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:18px}.brand{display:flex;align-items:center;gap:11px}.logo{width:42px;height:42px;border-radius:13px;background:linear-gradient(145deg,#ffcf67,#b9780c);display:grid;place-items:center;color:#19130a;font-weight:1000;font-size:21px}.brand h1{font-size:21px;line-height:1.1;margin:0;letter-spacing:-.5px}.brand small{display:block;color:var(--muted);margin-top:4px;font-size:11px;letter-spacing:1.5px;text-transform:uppercase}.top-actions{display:flex;gap:8px}.iconbtn{width:48px;padding:0;font-size:20px}.hero{border:1px solid #3a3020;background:radial-gradient(ellipse at 100% 0%,#332717 0%,#17161a 48%,#14161c 100%);border-radius:20px;padding:18px;margin-bottom:14px}.eyebrow{color:var(--gold);font-weight:800;text-transform:uppercase;letter-spacing:1.5px;font-size:11px}.hero h2{font-size:25px;line-height:1.1;margin:7px 0 6px;letter-spacing:-.7px}.hero p{margin:0;color:#c5c7ce}.weekrow{display:flex;gap:10px;align-items:center;margin-top:17px;flex-wrap:wrap}.weekrow select{flex:1;min-width:150px}.field,select,textarea,input[type=number],input[type=text]{width:100%;min-height:48px;background:#0f1116;color:var(--text);border:1px solid var(--line);border-radius:10px;padding:10px 11px;outline:none}input:focus,select:focus,textarea:focus{border-color:var(--gold)}label{display:block;color:var(--muted);font-size:12px;margin-bottom:6px}.dashboard{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:14px 0}.stat{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:13px}.stat-head{display:flex;justify-content:space-between;gap:8px;font-size:12px;color:var(--muted)}.stat strong{display:block;font-size:22px;margin:5px 0 8px}.stat small{color:var(--muted)}.progress{height:6px;border-radius:20px;background:#30333b;overflow:hidden}.progress span{display:block;height:100%;background:linear-gradient(90deg,var(--gold2),#ffda7c);width:0%;border-radius:20px}.sectionhead{display:flex;justify-content:space-between;align-items:center;gap:10px;margin:22px 2px 10px}.sectionhead h2{margin:0;font-size:18px}.sectionhead span{color:var(--muted);font-size:12px}.daytabs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:7px;margin-bottom:12px}.daytab{padding:8px 3px;min-height:58px;font-size:12px;color:var(--muted)}.daytab b{display:block;color:inherit;font-size:14px}.daytab.active{border-color:var(--gold);background:#2a2112;color:var(--gold)}.dayhead{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;padding:16px;background:var(--panel);border:1px solid var(--line);border-radius:16px 16px 0 0}.dayhead h3{margin:0;font-size:19px}.dayhead p{margin:4px 0 0;color:var(--muted);font-size:12px}.exercise{background:var(--panel);border:1px solid var(--line);border-top:0;padding:14px}.exercise:last-of-type{border-radius:0 0 16px 16px}.ex-top{display:flex;justify-content:space-between;gap:8px;align-items:flex-start}.ex-title{font-weight:750;font-size:15px}.ex-meta{font-size:12px;color:var(--muted);margin-top:3px}.tag{display:inline-block;font-size:10px;letter-spacing:.4px;color:#ffd77d;background:#392b13;border:1px solid #60461b;border-radius:5px;padding:2px 5px;margin-left:5px;vertical-align:1px}.main-tag{color:#c5d7ff;background:#1a263d;border-color:#30466b}.prescription{color:var(--gold);font-size:12px;font-weight:700;margin:10px 0}.sets{display:grid;gap:7px}.setrow{display:grid;grid-template-columns:27px minmax(58px,1fr) minmax(58px,1fr) 44px;gap:7px;align-items:center}.setnum{color:var(--muted);font-size:12px;text-align:center}.setrow input{min-width:0;min-height:45px;padding:8px;text-align:center;font-variant-numeric:tabular-nums}.check{width:44px;height:44px;min-height:44px;border-radius:11px;border:1px solid #424754;background:#101218;display:grid;place-items:center;font-size:19px;padding:0}.check.done{background:#173328;border-color:#2f8a63;color:var(--green)}.setlabels{display:grid;grid-template-columns:27px minmax(58px,1fr) minmax(58px,1fr) 44px;gap:7px;margin:7px 0 4px;color:#777f8e;font-size:10px;text-align:center}.ex-controls{display:flex;gap:7px;margin-top:10px}.ex-controls button{min-height:40px;padding:6px 12px;font-size:12px}.assist-note{color:var(--muted);font-size:11px;margin-top:8px}.notearea{min-height:90px;resize:vertical}.bottom-timer{position:fixed;z-index:20;bottom:0;left:0;right:0;padding:10px 14px calc(10px + env(safe-area-inset-bottom));background:rgba(12,13,17,.96);backdrop-filter:blur(14px);border-top:1px solid #30333b}.timer-inner{max-width:920px;margin:auto;display:grid;grid-template-columns:1fr auto;gap:12px;align-items:center}.timer-left{min-width:0}.timer-top{display:flex;align-items:center;gap:8px}.timer-label{font-size:10px;letter-spacing:1px;text-transform:uppercase;color:var(--muted)}.time{font-size:25px;font-weight:850;font-variant-numeric:tabular-nums;letter-spacing:1px}.timer-buttons{display:flex;gap:5px;margin-top:5px}.timer-buttons button{min-height:34px;padding:3px 9px;font-size:11px}.timer-actions{display:flex;gap:6px}.timer-actions button{min-height:44px;padding:7px 12px}.modal-backdrop{position:fixed;inset:0;z-index:40;background:#000b;display:none;align-items:flex-end;justify-content:center;padding:12px}.modal-backdrop.open{display:flex}.modal{width:100%;max-width:650px;max-height:92dvh;overflow:auto;background:#15171e;border:1px solid #3a3e48;border-radius:20px;padding:18px;margin-bottom:env(safe-area-inset-bottom)}.modalhead{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:16px}.modalhead h2{margin:0;font-size:20px}.settings-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.settingbox{border:1px solid var(--line);border-radius:13px;padding:12px}.settingbox h3{margin:0 0 10px;font-size:14px}.settings-actions{display:grid;gap:8px;margin-top:18px}.muted{color:var(--muted)}.small{font-size:12px}.toast{position:fixed;left:50%;transform:translateX(-50%);bottom:130px;background:#242833;border:1px solid #454b59;padding:10px 15px;border-radius:12px;z-index:60;display:none;max-width:90%;text-align:center}.empty{padding:24px;text-align:center;color:var(--muted)}.pr-warning{color:#ffcf7b;font-size:12px;margin:8px 0}.footer-note{color:#737987;font-size:11px;margin:18px 2px 0}
+@media(min-width:680px){.dashboard{grid-template-columns:repeat(4,minmax(0,1fr))}.hero{padding:22px}.exercise{padding:16px}.modal-backdrop{align-items:center}.app{padding-top:22px}.setrow,.setlabels{grid-template-columns:35px 1fr 1fr 52px}.check{width:50px}.daytab{font-size:13px}}
+@media(max-width:390px){.app{padding-left:10px;padding-right:10px}.hero h2{font-size:22px}.timer-inner{gap:7px}.time{font-size:22px}.timer-actions button{padding:6px 9px}.timer-buttons button{padding:3px 7px}.exercise{padding:12px}.setrow{grid-template-columns:22px minmax(52px,1fr) minmax(52px,1fr) 40px;gap:5px}.setlabels{grid-template-columns:22px minmax(52px,1fr) minmax(52px,1fr) 40px;gap:5px}.check{width:40px;height:44px}}
+</style>
+</head>
+<body>
+<div class="app">
+  <header class="topbar">
+    <div class="brand"><div class="logo">A</div><div><h1>Apex Tracker</h1><small>Powerbuilding · Zyklus <span id="cycleNum">1</span></small></div></div>
+    <div class="top-actions"><button class="iconbtn" id="settingsOpen" aria-label="Einstellungen" title="Einstellungen">⚙️</button></div>
+  </header>
+  <section class="hero">
+    <div class="eyebrow">Dein 8-Wochen-Zyklus</div>
+    <h2 id="heroTitle">Stärker. Systematisch.</h2>
+    <p id="heroText">Feste Prozentvorgaben · kurze Einheiten · messbarer Fortschritt</p>
+    <div class="weekrow"><div style="flex:1;min-width:150px"><label for="weekSelect">Trainingswoche</label><select id="weekSelect"></select></div><div style="flex:1;min-width:150px"><label for="daySelect">Trainingstag</label><select id="daySelect"><option value="0">Tag 1 · Lower A</option><option value="1">Tag 2 · Upper A</option><option value="2">Tag 3 · Lower B</option><option value="3">Tag 4 · Upper B</option></select></div></div>
+  </section>
+  <section class="dashboard" id="dashboard"></section>
+  <div class="sectionhead"><h2>Trainingseinheit</h2><span id="sessionCount">0 / 0 Sätze erledigt</span></div>
+  <nav class="daytabs" id="dayTabs">
+    <button class="daytab active" data-day="0"><b>01</b>Lower A</button><button class="daytab" data-day="1"><b>02</b>Upper A</button><button class="daytab" data-day="2"><b>03</b>Lower B</button><button class="daytab" data-day="3"><b>04</b>Upper B</button>
+  </nav>
+  <section id="workout"></section>
+  <div class="sectionhead"><h2>Trainingsnotizen</h2><span>Automatisch gespeichert</span></div>
+  <textarea id="sessionNotes" class="notearea" placeholder="Technik, Tagesform, Besonderheiten …"></textarea>
+  <p class="footer-note">Gewichte werden auf 2,5 kg gerundet (Klimmzug-Zusatzgewicht auf 1 kg). Prozentvorgaben sind fest; kein RIR-/RPE-Override. Assistenz-RPE ist nur eine Orientierung. PR-Versuche nur mit sicherer Technik und geeigneten Sicherungen durchführen.</p>
+</div>
+
+<div class="bottom-timer">
+  <div class="timer-inner">
+    <div class="timer-left"><div class="timer-top"><span class="timer-label">Pausentimer</span><span class="time" id="timerDisplay">03:00</span></div><div class="timer-buttons"><button data-seconds="90">1.5m</button><button data-seconds="180">3m</button><button data-seconds="300">5m</button></div></div>
+    <div class="timer-actions"><button id="timerStart" class="primary">Start</button><button id="timerReset">Reset</button></div>
+  </div>
+</div>
+
+<div class="modal-backdrop" id="settingsModal" role="dialog" aria-modal="true" aria-labelledby="settingsTitle">
+ <div class="modal">
+  <div class="modalhead"><h2 id="settingsTitle">Einstellungen</h2><button id="settingsClose" class="iconbtn" aria-label="Schließen">×</button></div>
+  <p class="muted small">Die Trainings-Maxima (TM) werden automatisch als 92,5 % des eingetragenen 1RM berechnet. Beim Klimmzug ist das 1RM hier das geschätzte Zusatzgewicht.</p>
+  <div class="settings-grid" id="liftSettings"></div>
+  <div class="settings-actions">
+   <button id="saveSettings" class="primary">Werte speichern</button>
+   <button id="importPR">1RM aus PR-Woche übernehmen</button>
+   <p class="small muted">Für die Schätzung werden nur in Woche 8 abgehakte Sätze verwendet. Epley: Gewicht × (1 + Wiederholungen / 30); bei einer Wiederholung entspricht das 1RM direkt dem Gewicht.</p>
+   <button id="newCycle" class="danger">Neuen Zyklus starten</button>
+   <button id="exportData">Daten als JSON exportieren</button>
+   <button id="closeSettings" class="subtle">Schließen</button>
+  </div>
+ </div>
+</div>
+<div class="toast" id="toast"></div>
+<script>
+"use strict";
+const STORE_KEY = "apexTracker.v1";
+const ROUND = 2.5;
+const defaultLifts = {
+ squat:{name:"Kniebeuge",oneRM:132,goal:140,unit:"kg"},
+ bench:{name:"Bankdrücken",oneRM:120,goal:130,unit:"kg"},
+ deadlift:{name:"Kreuzheben",oneRM:168,goal:200,unit:"kg"},
+ pullup:{name:"Klimmzug-Zusatzgewicht",oneRM:33.7,goal:50,unit:"kg"}
+};
+const days = [
+ {name:"Lower A",focus:"Kniebeuge · schwerer Unterkörper",exercises:[
+  {id:"squat",name:"Kniebeuge",type:"main",lift:"squat",pattern:"squat",sets:3},
+  {id:"rdl",name:"Romanian Deadlift",type:"assist",sets:3,reps:[6,10],aesthetic:false,rpe:"RPE 7–8"},
+  {id:"legcurl",name:"Beinbeuger sitzend",type:"assist",sets:2,reps:[10,15],aesthetic:false,rpe:"RPE 8"},
+  {id:"calfstand",name:"Wadenheben stehend",type:"assist",sets:3,reps:[8,15],aesthetic:true,rpe:"RPE 8"}
+ ]},
+ {name:"Upper A",focus:"Bankdrücken · Klimmzug · horizontales Ziehen",exercises:[
+  {id:"bench",name:"Bankdrücken",type:"main",lift:"bench",pattern:"bench",sets:3},
+  {id:"pullupA",name:"Klimmzug mit Zusatzgewicht",type:"main",lift:"pullup",pattern:"pullupA",sets:3},
+  {id:"row",name:"Brustgestütztes Rudern",type:"assist",sets:3,reps:[6,10],aesthetic:false,rpe:"RPE 8"},
+  {id:"lateralA",name:"Seitheben am Kabelzug",type:"assist",sets:2,reps:[12,20],aesthetic:true,rpe:"RPE 8–9"},
+  {id:"rearA",name:"Reverse Cable Flyes",type:"assist",sets:2,reps:[12,20],aesthetic:true,rpe:"RPE 8–9"}
+ ]},
+ {name:"Lower B",focus:"Kreuzheben · Kniebeugen-Variante · Waden",exercises:[
+  {id:"deadlift",name:"Kreuzheben",type:"main",lift:"deadlift",pattern:"deadlift",sets:3},
+  {id:"pauseSquat",name:"Pause-Kniebeuge",type:"assist",sets:2,reps:[5,8],aesthetic:false,rpe:"RPE 7–8"},
+  {id:"legext",name:"Beinstrecker",type:"assist",sets:2,reps:[10,15],aesthetic:false,rpe:"RPE 8"},
+  {id:"calfseated",name:"Wadenheben sitzend",type:"assist",sets:3,reps:[10,20],aesthetic:true,rpe:"RPE 8"}
+ ]},
+ {name:"Upper B",focus:"Bank-Variante · vertikales Ziehen · Arme",exercises:[
+  {id:"pauseBench",name:"Pause-Bankdrücken",type:"main",lift:"bench",pattern:"pauseBench",sets:3},
+  {id:"pullupB",name:"Klimmzug mit Zusatzgewicht",type:"assist",lift:"pullup",sets:2,reps:[6,8],aesthetic:false,rpe:"RPE 7–8"},
+  {id:"latpulldown",name:"Latzug enger Neutralgriff",type:"assist",sets:2,reps:[8,12],aesthetic:true,rpe:"RPE 8"},
+  {id:"lateralB",name:"Seitheben Kurzhantel oder Kabel",type:"assist",sets:2,reps:[12,20],aesthetic:true,rpe:"RPE 8–9"},
+  {id:"facepull",name:"Face Pulls",type:"assist",sets:2,reps:[12,20],aesthetic:true,rpe:"RPE 8–9"},
+  {id:"curl",name:"Bizepscurls",type:"assist",sets:2,reps:[8,15],aesthetic:false,rpe:"RPE 8"},
+ ]}
+];
+const weekPlans = {
+ 1:{label:"Akkumulation",pct:{squat:75,bench:75,deadlift:75,pullup:75},reps:{squat:[6,5,5],bench:[6,5,5],deadlift:[5,5,5],pullup:[5,5,5]},backoff:.90},
+ 2:{label:"Akkumulation",pct:{squat:77.5,bench:77.5,deadlift:77.5,pullup:77.5},reps:{squat:[5,5,4],bench:[5,5,4],deadlift:[4,4,4],pullup:[4,4,4]},backoff:.90},
+ 3:{label:"Intensivierung",pct:{squat:82.5,bench:82.5,deadlift:82.5,pullup:82.5},reps:{squat:[4,4,4],bench:[4,4,4],deadlift:[3,3,3],pullup:[3,3,3]},backoff:.90},
+ 4:{label:"Deload",pct:{squat:62.5,bench:62.5,deadlift:62.5,pullup:62.5},reps:{squat:[3,3],bench:[3,3],deadlift:[3,3],pullup:[3,3]},backoff:1},
+ 5:{label:"Heavy Peak",pct:{squat:85,bench:85,deadlift:85,pullup:85},reps:{squat:[2,2,2],bench:[2,2,2],deadlift:[2,2,2],pullup:[2,2,2]},backoff:.92},
+ 6:{label:"Heavy Peak",pct:{squat:90,bench:90,deadlift:90,pullup:90},reps:{squat:[2,2,2],bench:[2,2,2],deadlift:[2,2,2],pullup:[2,2,2]},backoff:.90},
+ 7:{label:"Peak",pct:{squat:92.5,bench:92.5,deadlift:92.5,pullup:92.5},reps:{squat:[1,2,2],bench:[1,2,2],deadlift:[1,2,2],pullup:[1,2,2]},backoff:.88},
+ 8:{label:"PR-Test",pct:{squat:100,bench:100,deadlift:100,pullup:100},reps:{squat:[1,1,1],bench:[1,1,1],deadlift:[1,1,1],pullup:[1,1,1]},backoff:1}
+};
+const dayMainMap = {0:["squat"],1:["bench","pullup"],2:["deadlift"],3:["bench"]};
+let state = loadState();
+let activeDay = 0, timer = {duration:180,deadline:null,remaining:180,running:false}, timerInterval=null, toastTimer=null;
+
+function initialState(){return {version:1,cycle:1,week:1,lifts:structuredCloneSafe(defaultLifts),cycles:[{number:1,createdAt:new Date().toISOString(),lifts:structuredCloneSafe(defaultLifts),entries:{}}],timer:{duration:180,deadline:null,remaining:180,running:false}}}
+function structuredCloneSafe(v){return JSON.parse(JSON.stringify(v))}
+function loadState(){
+ try{const raw=localStorage.getItem(STORE_KEY);if(!raw)return initialState();const parsed=JSON.parse(raw);if(!parsed||!parsed.cycles||!parsed.lifts) return initialState();parsed.week=clamp(Number(parsed.week)||1,1,8);parsed.cycle=Number(parsed.cycle)||1;parsed.lifts={...structuredCloneSafe(defaultLifts),...parsed.lifts};parsed.cycles=Array.isArray(parsed.cycles)?parsed.cycles:[];if(!parsed.cycles.length)parsed.cycles=[{number:parsed.cycle,createdAt:new Date().toISOString(),lifts:structuredCloneSafe(parsed.lifts),entries:{}}];parsed.cycles.forEach(c=>{c.entries=c.entries||{};c.lifts=c.lifts||structuredCloneSafe(parsed.lifts)});parsed.timer=parsed.timer||{duration:180,remaining:180,running:false};return parsed}catch(e){return initialState()}
+}
+function saveState(){try{localStorage.setItem(STORE_KEY,JSON.stringify(state))}catch(e){showToast("Speichern fehlgeschlagen: lokaler Speicher möglicherweise voll.")}}
+function currentCycle(){return state.cycles.find(c=>c.number===state.cycle)||state.cycles[state.cycles.length-1]}
+function keyFor(day,week=state.week){return `w${week}-d${day}`}
+function currentEntry(day=activeDay,week=state.week){const c=currentCycle();const key=keyFor(day,week);if(!c.entries[key])c.entries[key]={exercises:{},notes:""};return c.entries[key]}
+function clamp(n,a,b){return Math.min(b,Math.max(a,n))}
+function roundTo(n,step){return Math.round(n/step)*step}
+function fmt(n){if(!Number.isFinite(n))return "—";return Number(n.toFixed(2)).toLocaleString("de-DE",{maximumFractionDigits:2})}
+function weightRound(lift,weight){return roundTo(weight,lift==="pullup"?1:ROUND)}
+function tm(lift){return state.lifts[lift].oneRM*.925}
+function prescribedWeight(lift,pct){return weightRound(lift,tm(lift)*pct/100)}
+function weekLiftPct(week,lift){return weekPlans[week].pct[lift]||75}
+function mainPrescription(ex,week){
+ const lift=ex.lift, p=weekPlans[week], max=state.lifts[lift].oneRM;
+ if(week===8){
+   const attempts=[1,1.025,1.05];return attempts.map((factor,i)=>({kg:weightRound(lift,max*factor),reps:1,label:`Versuch ${i+1} · ${Math.round(factor*100*10)/10}% 1RM`}));
+ }
+ const pct=p.pct[lift],reps=p.reps[lift]||[5,5,5], count=week===4?2:3;
+ return Array.from({length:count},(_,i)=>{
+   const actualPct=i===0?pct:pct*p.backoff;
+   return {kg:prescribedWeight(lift,actualPct),reps:reps[i]??reps[reps.length-1],label:i===0?`Top-Satz · ${fmt(pct)}% TM`:`Back-off · ${fmt(actualPct)}% TM`};
+ });
+}
+function getExState(day,ex,week=state.week){
+ const entry=currentEntry(day,week);if(!entry.exercises[ex.id])entry.exercises[ex.id]={sets:[]};
+ const es=entry.exercises[ex.id];
+ const target=ex.type==="main"?mainPrescription(ex,week):Array.from({length:ex.sets},()=>({kg:"",reps:"",done:false}));
+ while(es.sets.length<target.length){const i=es.sets.length;let previous=week>1?previousSet(day,ex,i,week-1):null;es.sets.push({kg:ex.type==="main"?target[i].kg:(previous?.kg??""),reps:ex.type==="main"?target[i].reps:(previous?.reps??""),done:false})}
+ if(es.sets.length>target.length)es.sets=es.sets.slice(0,target.length);
+ es.sets.forEach((s,i)=>{if(ex.type==="main"&&!s.overridden){s.kg=target[i].kg;s.reps=target[i].reps}});
+ return es;
+}
+function previousSet(day,ex,index,week){const c=currentCycle(),e=c.entries[keyFor(day,week)],sets=e?.exercises?.[ex.id]?.sets;return sets?.[index]||null}
+function ensureWeekOptions(){const sel=document.getElementById("weekSelect");sel.innerHTML="";for(let w=1;w<=8;w++){const o=document.createElement("option");o.value=w;o.textContent=`Woche ${w} · ${weekPlans[w].label}`;sel.appendChild(o)}sel.value=state.week}
+function renderDashboard(){
+ const box=document.getElementById("dashboard");box.innerHTML="";
+ Object.entries(state.lifts).forEach(([id,l])=>{const percent=l.goal>0?clamp(l.oneRM/l.goal*100,0,100):0;const el=document.createElement("div");el.className="stat";el.innerHTML=`<div class="stat-head"><span>${l.name}</span><span>TM ${fmt(tm(id))}</span></div><strong>${fmt(l.oneRM)} <small>${l.unit}</small></strong><div class="progress"><span style="width:${percent}%"></span></div><div class="stat-head" style="margin-top:7px"><span>Ziel ${fmt(l.goal)} kg</span><span>${Math.round(percent)}%</span></div>`;box.appendChild(el)});
+ document.getElementById("cycleNum").textContent=state.cycle;
+ document.getElementById("heroTitle").textContent=`Woche ${state.week}: ${weekPlans[state.week].label}`;
+ document.getElementById("heroText").textContent=state.week===8?"PR-Test: 100 %, 102,5 % und 105 % des 1RM. Nach einem Fehlversuch stoppen.":`Trainings-Max = 92,5 % 1RM · ${state.week===4?"reduzierte Deload-Belastung":state.week>=5?"schwere Peak-Sätze":"Akkumulation und Intensivierung"}`;
+}
+function renderWorkout(){
+ const day=days[activeDay],container=document.getElementById("workout");container.innerHTML="";
+ document.querySelectorAll(".daytab").forEach(b=>b.classList.toggle("active",Number(b.dataset.day)===activeDay));
+ document.getElementById("daySelect").value=activeDay;
+ const entry=currentEntry(activeDay);
+ const head=document.createElement("div");head.className="dayhead";head.innerHTML=`<div><h3>${day.name}</h3><p>${day.focus}</p></div><button class="danger" id="resetDay">Tag zurücksetzen</button>`;container.appendChild(head);
+ let total=0,done=0;
+ day.exercises.forEach(ex=>{
+  const es=getExState(activeDay,ex),pres=ex.type==="main"?mainPrescription(ex,state.week):null;
+  total+=es.sets.length;done+=es.sets.filter(s=>s.done).length;
+  const card=document.createElement("article");card.className="exercise";
+  const tag=ex.aesthetic?'<span class="tag">ÄSTHETIK</span>':(ex.type==="main"?'<span class="tag main-tag">MAIN LIFT</span>':"");
+  let presText=ex.type==="main"?pres.map(p=>p.label).join(" · "):`Ziel ${ex.reps[0]}–${ex.reps[1]} Wdh. · ${ex.rpe||"RPE 7–8"}`;
+  card.innerHTML=`<div class="ex-top"><div><div class="ex-title">${ex.name}${tag}</div><div class="ex-meta">${ex.type==="main"?"Festes Prozentprogramm":"Assistenz · Double Progression"}</div></div><div class="small muted">${es.sets.length} Sätze</div></div><div class="prescription">${presText}</div><div class="setlabels"><span>Satz</span><span>kg</span><span>Wdh.</span><span>OK</span></div><div class="sets"></div><div class="ex-controls"><button data-add="${ex.id}">＋ Satz</button><button data-remove="${ex.id}">− Satz</button><span class="assist-note">${ex.type==="assist"?"Obere Wdh.-Grenze in allen Sätzen erreicht → nächstes Mal Gewicht leicht erhöhen.":state.week===8?"Nach Fehlversuch keine weiteren Versuche.":""}</span></div>`;
+  const setWrap=card.querySelector(".sets");
+  es.sets.forEach((s,i)=>{
+   const row=document.createElement("div");row.className="setrow";
+   const locked=ex.type==="main"&&state.week===8&&i>0&&es.sets.slice(0,i).some(x=>x.failed);
+   row.innerHTML=`<span class="setnum">${i+1}</span><input type="number" inputmode="decimal" step="${ex.lift==="pullup"?1:2.5}" aria-label="${ex.name} Satz ${i+1} kg" placeholder="${ex.type==="assist"?(previousSet(activeDay,ex,i,state.week-1)?.kg??"kg"):"kg"}" value="${escapeAttr(s.kg)}" ${locked?"disabled":""}><input type="number" inputmode="numeric" step="1" min="1" aria-label="${ex.name} Satz ${i+1} Wiederholungen" placeholder="${ex.type==="assist"?(previousSet(activeDay,ex,i,state.week-1)?.reps??"Wdh."):"Wdh."}" value="${escapeAttr(s.reps)}" ${locked?"disabled":""}><button class="check ${s.done?"done":""}" aria-label="Satz ${i+1} abhaken" ${locked?"disabled":""}>${s.done?"✓":"○"}</button>`;
+   const inputs=row.querySelectorAll("input"),check=row.querySelector("button");
+   inputs[0].addEventListener("change",()=>{s.kg=inputs[0].value;if(ex.type==="main")s.overridden=true;saveState()});
+   inputs[1].addEventListener("change",()=>{s.reps=inputs[1].value;if(ex.type==="main")s.overridden=true;saveState()});
+   check.addEventListener("click",()=>{s.done=!s.done;if(state.week===8&&s.done&&Number(s.reps)<1){s.done=false;showToast("Bitte zuerst Wiederholungen eintragen.");return}if(state.week===8&&s.done){const prev=es.sets.slice(0,i).some(x=>x.failed);if(prev){s.done=false;showToast("Nach einem Fehlversuch ist der PR-Test beendet.");return}if(!confirm("War dieser Versuch erfolgreich? OK = erfolgreich, Abbrechen = Fehlversuch und Test beenden.")){s.done=false;s.failed=true;showToast("Fehlversuch markiert. Keine weiteren Versuche für diese Übung.");}else s.failed=false}saveState();startTimer(ex.type==="main"?(state.week>=5?300:180):90);renderWorkout();});
+   setWrap.appendChild(row);
+  });
+  card.querySelector(`[data-add="${ex.id}"]`).addEventListener("click",()=>{if(es.sets.length>=5){showToast("Maximal 5 Sätze pro Übung.");return}const prev=es.sets[es.sets.length-1]||{};es.sets.push({kg:ex.type==="main"?"":(prev.kg??""),reps:ex.type==="main"?"":(prev.reps??""),done:false});saveState();renderWorkout()});
+  card.querySelector(`[data-remove="${ex.id}"]`).addEventListener("click",()=>{if(es.sets.length<=1){showToast("Mindestens ein Satz bleibt erhalten.");return}es.sets.pop();saveState();renderWorkout()});
+  container.appendChild(card);
+ });
+ document.getElementById("sessionCount").textContent=`${done} / ${total} Sätze erledigt`;
+ document.getElementById("sessionNotes").value=entry.notes||"";
+ document.getElementById("resetDay").addEventListener("click",()=>{if(confirm(`Training ${day.name} in Woche ${state.week} zurücksetzen? Alle Sätze und Notizen dieses Tages werden gelöscht.`)){delete currentCycle().entries[keyFor(activeDay)];saveState();renderWorkout();showToast("Trainingstag zurückgesetzt.")}});
+}
+function escapeAttr(v){return String(v??"").replaceAll("&","&amp;").replaceAll('"',"&quot;").replaceAll("<","&lt;")}
+function renderAll(){ensureWeekOptions();renderDashboard();renderWorkout();renderSettings();syncTimerUI()}
+function showToast(message){const t=document.getElementById("toast");t.textContent=message;t.style.display="block";clearTimeout(toastTimer);toastTimer=setTimeout(()=>t.style.display="none",2800)}
+function renderSettings(){
+ const box=document.getElementById("liftSettings");box.innerHTML="";
+ Object.entries(state.lifts).forEach(([id,l])=>{const div=document.createElement("div");div.className="settingbox";div.innerHTML=`<h3>${l.name}</h3><label>Geschätztes 1RM / Zusatzgewicht (kg)</label><input type="number" inputmode="decimal" step="0.1" min="0" id="rm-${id}" value="${l.oneRM}"><label style="margin-top:9px">Ziel (kg)</label><input type="number" inputmode="decimal" step="0.5" min="0" id="goal-${id}" value="${l.goal}"><p class="small muted">TM: <strong id="tm-${id}">${fmt(l.oneRM*.925)} kg</strong></p>`;box.appendChild(div);const rm=div.querySelector(`#rm-${id}`);rm.addEventListener("input",()=>div.querySelector(`#tm-${id}`).textContent=fmt((Number(rm.value)||0)*.925)+" kg")});
+}
+function openSettings(){renderSettings();document.getElementById("settingsModal").classList.add("open")}
+function closeSettings(){document.getElementById("settingsModal").classList.remove("open")}
+function saveSettings(){
+ const updated=structuredCloneSafe(state.lifts);
+ for(const id of Object.keys(updated)){const rm=Number(document.getElementById(`rm-${id}`).value),goal=Number(document.getElementById(`goal-${id}`).value);if(!(rm>0)||!(goal>0)||!Number.isFinite(rm)||!Number.isFinite(goal)){showToast("Bitte gültige Werte größer als 0 eingeben.");return}updated[id].oneRM=rm;updated[id].goal=goal}
+ state.lifts=updated;currentCycle().lifts=structuredCloneSafe(updated);saveState();renderAll();closeSettings();showToast("Einstellungen gespeichert.");
+}
+function importPR(){
+ const cycle=currentCycle(),week=8;let imported=0;
+ for(const [liftId,lift] of Object.entries(state.lifts)){
+  let best=0;
+  days.forEach((day,di)=>day.exercises.forEach(ex=>{
+   if(ex.type!=="main"||ex.lift!==liftId)return;
+   const sets=cycle.entries[keyFor(di,week)]?.exercises?.[ex.id]?.sets||[];
+   sets.forEach(s=>{if(!s.done)return;const kg=Number(s.kg),reps=Number(s.reps);if(kg>0&&reps>0){const est=reps===1?kg:kg*(1+reps/30);if(est>best)best=est}});
+  }));
+  if(best>0){state.lifts[liftId].oneRM=weightRound(liftId,best);imported++}
+ }
+ if(!imported){showToast("Keine abgehakten, gültigen Sätze in Woche 8 gefunden.");return}
+ currentCycle().lifts=structuredCloneSafe(state.lifts);saveState();renderAll();showToast(`${imported} 1RM-Wert(e) aus Woche 8 übernommen.`);
+}
+function startNewCycle(){
+ if(!confirm("Neuen Zyklus starten? Frühere Trainings bleiben archiviert. Der neue Zyklus beginnt in Woche 1 mit leeren Einträgen und den aktuellen 1RM-/Zielwerten."))return;
+ const next=state.cycles.reduce((m,c)=>Math.max(m,Number(c.number)||0),0)+1;
+ state.cycle=next;state.week=1;state.cycles.push({number:next,createdAt:new Date().toISOString(),lifts:structuredCloneSafe(state.lifts),entries:{}});
+ activeDay=0;saveState();renderAll();closeSettings();showToast(`Zyklus ${next} gestartet.`);
+}
+function exportData(){const blob=new Blob([JSON.stringify(state,null,2)],{type:"application/json"});const url=URL.createObjectURL(blob);const a=document.createElement("a");a.href=url;a.download=`apex-tracker-zyklus-${state.cycle}.json`;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000)}
+function timerRemaining(){if(timer.running&&timer.deadline)return Math.max(0,Math.ceil((timer.deadline-Date.now())/1000));return timer.remaining}
+function syncTimerUI(){
+ const left=timerRemaining();const m=Math.floor(left/60),s=left%60;document.getElementById("timerDisplay").textContent=`${String(m).padStart(2,"0")}:${String(s).padStart(2,"0")}`;
+ document.getElementById("timerStart").textContent=timer.running?"Pause":"Start";document.getElementById("timerStart").classList.toggle("primary",!timer.running);
+}
+function persistTimer(){state.timer={duration:timer.duration,deadline:timer.deadline,remaining:timer.remaining,running:timer.running};saveState()}
+function finishTimer(){timer.running=false;timer.deadline=null;timer.remaining=0;persistTimer();syncTimerUI();try{if("vibrate"in navigator)navigator.vibrate([250,120,250]);const AudioCtx=window.AudioContext||window.webkitAudioContext;if(AudioCtx){const ctx=new AudioCtx();[0,.22,.44].forEach((delay)=>{const osc=ctx.createOscillator(),gain=ctx.createGain();osc.connect(gain);gain.connect(ctx.destination);osc.frequency.value=880;gain.gain.setValueAtTime(.0001,ctx.currentTime+delay);gain.gain.exponentialRampToValueAtTime(.15,ctx.currentTime+delay+.02);gain.gain.exponentialRampToValueAtTime(.0001,ctx.currentTime+delay+.15);osc.start(ctx.currentTime+delay);osc.stop(ctx.currentTime+delay+.16)});setTimeout(()=>ctx.close(),1200)}}catch(e){}showToast("Pause beendet.");}
+function startTimer(seconds){timer.duration=seconds;timer.remaining=seconds;timer.deadline=Date.now()+seconds*1000;timer.running=true;persistTimer();syncTimerUI()}
+function toggleTimer(){if(timer.running){timer.remaining=timerRemaining();timer.running=false;timer.deadline=null}else{if(timer.remaining<=0)timer.remaining=timer.duration;timer.deadline=Date.now()+timer.remaining*1000;timer.running=true}persistTimer();syncTimerUI()}
+function resetTimer(){timer.running=false;timer.deadline=null;timer.remaining=timer.duration;persistTimer();syncTimerUI()}
+function tickTimer(){if(timer.running){const left=timerRemaining();if(left<=0)finishTimer();else syncTimerUI()}}
+function initTimer(){const t=state.timer||{};timer.duration=Number(t.duration)||180;timer.remaining=Number.isFinite(t.remaining)?t.remaining:timer.duration;timer.running=!!t.running;timer.deadline=t.deadline||null;if(timer.running&&timer.deadline){if(Date.now()>=timer.deadline)finishTimer();else timer.remaining=timerRemaining()}else timer.running=false;syncTimerUI();timerInterval=setInterval(tickTimer,250)}
+document.getElementById("weekSelect").addEventListener("change",e=>{state.week=clamp(Number(e.target.value),1,8);saveState();renderAll()});
+document.getElementById("daySelect").addEventListener("change",e=>{activeDay=Number(e.target.value);renderWorkout()});
+document.querySelectorAll(".daytab").forEach(b=>b.addEventListener("click",()=>{activeDay=Number(b.dataset.day);renderWorkout()}));
+document.getElementById("sessionNotes").addEventListener("input",e=>{currentEntry().notes=e.target.value;saveState()});
+document.getElementById("settingsOpen").addEventListener("click",openSettings);
+document.getElementById("settingsClose").addEventListener("click",closeSettings);
+document.getElementById("closeSettings").addEventListener("click",closeSettings);
+document.getElementById("settingsModal").addEventListener("click",e=>{if(e.target.id==="settingsModal")closeSettings()});
+document.getElementById("saveSettings").addEventListener("click",saveSettings);
+document.getElementById("importPR").addEventListener("click",importPR);
+document.getElementById("newCycle").addEventListener("click",startNewCycle);
+document.getElementById("exportData").addEventListener("click",exportData);
+document.querySelectorAll("[data-seconds]").forEach(b=>b.addEventListener("click",()=>{timer.duration=Number(b.dataset.seconds);timer.remaining=timer.duration;timer.running=false;timer.deadline=null;persistTimer();syncTimerUI()}));
+document.getElementById("timerStart").addEventListener("click",toggleTimer);
+document.getElementById("timerReset").addEventListener("click",resetTimer);
+window.addEventListener("visibilitychange",()=>{if(document.visibilityState==="visible"){tickTimer();syncTimerUI()}});
+window.addEventListener("beforeunload",()=>{if(timer.running)timer.remaining=timerRemaining();persistTimer()});
+initTimer();renderAll();
+</script>
+</body>
+</html>
